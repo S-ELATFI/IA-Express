@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IA Express - Atelier Découverte IA</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', 'Times New Roman', serif;
+            line-height: 1.8;
+            color: #2c3e50;
+            background: #f8f9fa;
+        }
+
+        .header-bar {
+            background: #1a365d;
+            padding: 12px 0;
+            color: white;
+            font-size: 0.9em;
+            text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .container {
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: white;
+            padding: 60px 20px 50px;
+            border-bottom: 3px solid #2c5282;
+        }
+
+        .logo-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 2.8em;
+            color: #1a365d;
+            margin-bottom: 15px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+        }
+
+        .subtitle {
+            font-size: 1.3em;
+            color: #4a5568;
+            font-style: italic;
+            margin-bottom: 25px;
+        }
+
+        .event-meta {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            flex-wrap: wrap;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1em;
+            color: #2d3748;
+            margin-top: 25px;
+        }
+
+        .event-meta span {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        main {
+            background: white;
+            margin: 40px auto;
+            padding: 50px 60px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            font-size: 1.9em;
+            color: #1a365d;
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+            font-weight: 600;
+        }
+
+        h2:first-of-type {
+            margin-top: 0;
+        }
+
+        .intro-text {
+            font-size: 1.15em;
+            line-height: 1.9;
+            color: #4a5568;
+            margin-bottom: 35px;
+        }
+
+        .details-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        .detail-item {
+            padding: 20px;
+            background: #f7fafc;
+            border-left: 4px solid #2c5282;
+        }
+
+        .detail-item h3 {
+            font-size: 1.1em;
+            color: #2c5282;
+            margin-bottom: 8px;
+            font-family: 'Segoe UI', sans-serif;
+            font-weight: 600;
+        }
+
+        .detail-item p {
+            color: #4a5568;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .program-section {
+            margin: 35px 0;
+        }
+
+        .program-section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .program-section li {
+            padding: 15px 0;
+            border-bottom: 1px solid #e2e8f0;
+            color: #4a5568;
+            font-size: 1.05em;
+        }
+
+        .program-section li:last-child {
+            border-bottom: none;
+        }
+
+        .program-section li:before {
+            content: "▸";
+            color: #2c5282;
+            font-weight: bold;
+            margin-right: 12px;
+        }
+
+        .benefits-box {
+            background: #edf2f7;
+            padding: 30px;
+            margin: 35px 0;
+            border-radius: 4px;
+        }
+
+        .benefits-box h3 {
+            font-size: 1.3em;
+            color: #1a365d;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+
+        .benefits-box ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .benefits-box li {
+            padding: 10px 0;
+            color: #4a5568;
+            font-size: 1.05em;
+        }
+
+        .benefits-box li:before {
+            content: "✓";
+            color: #2c5282;
+            font-weight: bold;
+            margin-right: 12px;
+            font-size: 1.2em;
+        }
+
+        .registration-section {
+            background: #1a365d;
+            color: white;
+            padding: 45px;
+            margin: 50px 0;
+            text-align: center;
+        }
+
+        .registration-section h2 {
+            color: white;
+            border-bottom: 2px solid rgba(255,255,255,0.3);
+            font-size: 1.8em;
+        }
+
+        .registration-section p {
+            font-size: 1.1em;
+            margin: 25px 0;
+            line-height: 1.7;
+        }
+
+        .btn-register {
+            display: inline-block;
+            background: white;
+            color: #1a365d;
+            padding: 16px 50px;
+            text-decoration: none;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.1em;
+            font-weight: 600;
+            margin: 25px 0;
+            border: 2px solid white;
+            transition: all 0.3s ease;
+        }
+
+        .btn-register:hover {
+            background: transparent;
+            color: white;
+        }
+
+        .qr-section {
+            margin-top: 35px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .qr-section p {
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .qr-box {
+            width: 180px;
+            height: 180px;
+            background: white;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85em;
+            color: #1a365d;
+            border: 2px solid #e2e8f0;
+            text-align: center;
+            padding: 15px;
+        }
+
+        footer {
+            background: #2d3748;
+            color: #cbd5e0;
+            padding: 40px 20px;
+            text-align: center;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.95em;
+        }
+
+        footer p {
+            margin: 8px 0;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            main {
+                padding: 35px 25px;
+            }
+
+            .details-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .event-meta {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header-bar">
+        Campus Universitaire · Bâtiment B · Salle Multimédia
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="logo-section">
+                <h1>IA Express</h1>
+                <p class="subtitle">Atelier découverte de l'intelligence artificielle</p>
+                <div class="event-meta">
+                    <span>📅 Jeudi 21 mars 2025</span>
+                    <span>🕐 17h30 – 19h30</span>
+                    <span>👥 40 places disponibles</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <p class="intro-text">
+            Le département d'innovation pédagogique vous invite à participer à un atelier pratique consacré à la découverte de l'intelligence artificielle. Cet événement s'adresse à tous les étudiants, quelle que soit leur filière, qui souhaitent comprendre et maîtriser les outils d'IA dans un cadre académique et professionnel.
+        </p>
+
+        <h2>Informations pratiques</h2>
+        <div class="details-grid">
+            <div class="detail-item">
+                <h3>Date et horaire</h3>
+                <p>Jeudi 21 mars 2025<br>De 17h30 à 19h30<br>(Durée : 2 heures)</p>
+            </div>
+
+            <div class="detail-item">
+                <h3>Lieu</h3>
+                <p>Salle multimédia<br>Bâtiment B<br>Campus universitaire</p>
+            </div>
+
+            <div class="detail-item">
+                <h3>Public concerné</h3>
+                <p>Étudiants de 18 à 25 ans<br>Toutes filières confondues<br>Aucun prérequis technique</p>
+            </div>
+
+            <div class="detail-item">
+                <h3>Modalités</h3>
+                <p>Participation gratuite<br>Inscription obligatoire<br>Places limitées à 40 participants</p>
+            </div>
+        </div>
+
+        <h2>Objectifs de l'atelier</h2>
+        <div class="program-section">
+            <ul>
+                <li>Comprendre les fondamentaux de l'intelligence artificielle et ses applications concrètes</li>
+                <li>Découvrir des outils d'IA pratiques adaptés au contexte académique et professionnel</li>
+                <li>Participer à des exercices pratiques pour développer vos compétences numériques</li>
+                <li>Échanger avec des pairs et enrichir votre réseau étudiant</li>
+                <li>Repartir avec des ressources pédagogiques exclusives</li>
+            </ul>
+        </div>
+
+        <div class="benefits-box">
+            <h3>Avantages de la participation</h3>
+            <ul>
+                <li>Atelier entièrement gratuit, ouvert à tous les niveaux</li>
+                <li>Approche pédagogique progressive et accessible</li>
+                <li>Exercices pratiques encadrés par des formateurs qualifiés</li>
+                <li>Documentation et ressources numériques offertes</li>
+                <li>Certificat de participation délivré en fin d'atelier</li>
+            </ul>
+        </div>
+
+        <h2>Public cible</h2>
+        <p class="intro-text">
+            Cet atelier s'adresse particulièrement aux étudiants de tous horizons académiques qui souhaitent se familiariser avec les technologies d'intelligence artificielle. Que vous soyez en lettres, sciences, gestion ou ingénierie, cet événement vous permettra d'acquérir des compétences transversales essentielles pour votre parcours universitaire et professionnel.
+        </p>
+
+        <div class="registration-section">
+            <h2>Inscription</h2>
+            <p>
+                Les places étant limitées à 40 participants, nous vous invitons à vous inscrire rapidement via le formulaire en ligne. Votre inscription sera confirmée par courriel dans les 48 heures suivant votre demande.
+            </p>
+            <a href="https://forms.gle/exempleIAexpress" class="btn-register" target="_blank">
+                Formulaire d'inscription
+            </a>
+
+            <div class="qr-section">
+                <p>Vous pouvez également scanner ce code QR pour accéder directement au formulaire :</p>
+                <div class="qr-box">
+                    Code QR à générer depuis<br>forms.gle/exempleIAexpress
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p><strong>Contact</strong></p>
+            <p>Pour toute question concernant cet événement, veuillez contacter le service des activités étudiantes.</p>
+            <p style="margin-top: 25px; opacity: 0.7;">© 2025 Campus Universitaire · Tous droits réservés</p>
+        </div>
+    </footer>
+</body>
+</html>
